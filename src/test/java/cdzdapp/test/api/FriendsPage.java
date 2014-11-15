@@ -2,6 +2,8 @@ package cdzdapp.test.api;
 
 import com.gargoylesoftware.htmlunit.html.HtmlAnchor;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
+import com.gargoylesoftware.htmlunit.html.HtmlSubmitInput;
+import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
 
 import java.io.IOException;
 
@@ -28,5 +30,17 @@ public class FriendsPage {
 
     public int getFriendsCount() {
         return htmlPage.getByXPath("//tr[@class='friend']").size();
+    }
+
+    public FriendsPage addFriend(String firstName, String lastName) throws IOException {
+        HtmlTextInput firstNameInput = htmlPage.getElementByName("firstName");
+        firstNameInput.setValueAttribute(firstName);
+
+        HtmlTextInput lastNameInputInput = htmlPage.getElementByName("lastName");
+        lastNameInputInput.setValueAttribute(lastName);
+
+        HtmlSubmitInput submitButton = htmlPage.getElementByName("submit");
+        HtmlPage newPage = submitButton.click();
+        return new FriendsPage(newPage);
     }
 }

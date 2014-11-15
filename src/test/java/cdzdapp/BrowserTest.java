@@ -10,7 +10,6 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
@@ -56,13 +55,25 @@ public class BrowserTest {
         assertTrue(loginPage.isLoaded());
     }
 
-    @Ignore
     @Test
     public void lisasFriend() throws Exception {
-        // log in as lisa
-        // check that she has no friends
-        // create a new friend and check she exists
-        // logout
-        // log in again and check her friend is still there
+        LoginPage loginPage = new LoginPage((HtmlPage) webClient.getPage("http://localhost:" + Main.HTTP_SERVER_PORT));
+        assertTrue(loginPage.isLoaded());
+
+        FriendsPage friendsPage = loginPage.login("Lisa");
+        assertTrue(friendsPage.isLoaded());
+        assertEquals("Lisa", friendsPage.getName());
+        assertEquals(0, friendsPage.getFriendsCount());
+
+        friendsPage = friendsPage.addFriend("Jimbo", "Jones");
+        assertEquals(1, friendsPage.getFriendsCount());
+
+        loginPage = friendsPage.logout();
+        assertTrue(loginPage.isLoaded());
+
+        friendsPage = loginPage.login("Lisa");
+        assertTrue(friendsPage.isLoaded());
+        assertEquals("Lisa", friendsPage.getName());
+        assertEquals(1, friendsPage.getFriendsCount());
     }
 }
