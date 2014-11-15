@@ -6,6 +6,7 @@ import cdzdapp.repository.FriendRepository;
 import cdzdapp.repository.InMemoryFriendRepository;
 import cdzdapp.repository.InMemoryUserRepository;
 import cdzdapp.repository.UserRepository;
+import cdzdapp.util.ServerInfo;
 import com.github.mustachejava.DefaultMustacheFactory;
 import com.github.mustachejava.Mustache;
 import com.github.mustachejava.MustacheFactory;
@@ -31,7 +32,10 @@ public class FriendsServlet extends HttpServlet {
             return;
         }
 
+        ServerInfo serverInfo = new ServerInfo();
         Map<String,Object> values = new HashMap<>();
+        values.put("server", serverInfo.getHostName());
+        values.put("version", serverInfo.getVersion());
         values.put("name", user.getName());
         values.put("friends", friendRepository.getFriendsForUser(user));
 

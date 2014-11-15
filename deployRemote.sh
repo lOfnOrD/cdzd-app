@@ -10,7 +10,7 @@ rm cdzd-app-*.jar
 
 echo Installing new version ...
 curl -o cdzd-app-$VERSION.jar http://10.0.2.2:8081/artifactory/libs-release/com/axelfontaine/cdzd-app/$VERSION/cdzd-app-$VERSION.jar
-nohup java -jar cdzd-app-$VERSION.jar 0<&- &>/dev/null &
+nohup java -jar cdzd-app-$VERSION.jar 0<&- &>log.txt &
 
 echo Waiting for new version to start ...
 COUNTER=0

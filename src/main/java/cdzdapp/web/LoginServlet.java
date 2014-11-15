@@ -3,6 +3,7 @@ package cdzdapp.web;
 import cdzdapp.domain.User;
 import cdzdapp.repository.InMemoryUserRepository;
 import cdzdapp.repository.UserRepository;
+import cdzdapp.util.ServerInfo;
 import com.github.mustachejava.DefaultMustacheFactory;
 import com.github.mustachejava.Mustache;
 import com.github.mustachejava.MustacheFactory;
@@ -13,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoginServlet extends HttpServlet {
     private UserRepository userRepository = InMemoryUserRepository.INSTANCE;
@@ -25,10 +28,15 @@ public class LoginServlet extends HttpServlet {
             return;
         }
 
+        ServerInfo serverInfo = new ServerInfo();
+        Map<String,Object> values = new HashMap<>();
+        values.put("server", serverInfo.getHostName());
+        values.put("version", serverInfo.getVersion());
+
         response.setCharacterEncoding("UTF-8");
         MustacheFactory mustacheFactory = new DefaultMustacheFactory();
         Mustache mustache = mustacheFactory.compile("templates/login.html");
-        mustache.execute(response.getWriter(), null).flush();
+        mustache.execute(response.getWriter(), values).flush();
     }
 
     @Override
