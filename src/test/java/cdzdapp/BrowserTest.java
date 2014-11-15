@@ -1,8 +1,8 @@
-package cdzero2hero;
+package cdzdapp;
 
-import cdzero2hero.test.api.FriendsPage;
-import cdzero2hero.test.api.LoginPage;
-import cdzero2hero.test.categories.LargeTest;
+import cdzdapp.test.api.FriendsPage;
+import cdzdapp.test.api.LoginPage;
+import cdzdapp.test.categories.LargeTest;
 import com.gargoylesoftware.htmlunit.NicelyResynchronizingAjaxController;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;

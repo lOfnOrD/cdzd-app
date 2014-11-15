@@ -1,8 +1,8 @@
-package cdzero2hero.web;
+package cdzdapp.web;
 
-import cdzero2hero.domain.User;
-import cdzero2hero.repository.InMemoryUserRepository;
-import cdzero2hero.repository.UserRepository;
+import cdzdapp.domain.User;
+import cdzdapp.repository.InMemoryUserRepository;
+import cdzdapp.repository.UserRepository;
 import com.github.mustachejava.DefaultMustacheFactory;
 import com.github.mustachejava.Mustache;
 import com.github.mustachejava.MustacheFactory;

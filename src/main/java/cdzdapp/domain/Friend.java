@@ -1,4 +1,4 @@
-package cdzero2hero.domain;
+package cdzdapp.domain;
 
 public class Friend {
     private Integer id;

@@ -1,6 +1,6 @@
-package cdzero2hero.repository;
+package cdzdapp.repository;
 
-import cdzero2hero.domain.User;
+import cdzdapp.domain.User;
 
 public interface UserRepository {
     User getUserById(Integer id);

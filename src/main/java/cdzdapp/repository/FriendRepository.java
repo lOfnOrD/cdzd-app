@@ -1,7 +1,7 @@
-package cdzero2hero.repository;
+package cdzdapp.repository;
 
-import cdzero2hero.domain.Friend;
-import cdzero2hero.domain.User;
+import cdzdapp.domain.Friend;
+import cdzdapp.domain.User;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package cdzero2hero.domain;
+package cdzdapp.domain;
 
 public class User {
     private Integer id;

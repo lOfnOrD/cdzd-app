@@ -1,4 +1,4 @@
-package cdzero2hero.test.api;
+package cdzdapp.test.api;
 
 import com.gargoylesoftware.htmlunit.html.HtmlAnchor;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;

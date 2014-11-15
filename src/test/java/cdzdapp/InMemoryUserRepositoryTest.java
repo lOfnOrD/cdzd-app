@@ -1,9 +1,9 @@
-package cdzero2hero;
+package cdzdapp;
 
-import cdzero2hero.domain.User;
-import cdzero2hero.repository.InMemoryUserRepository;
-import cdzero2hero.repository.UserRepository;
-import cdzero2hero.test.categories.SmallTest;
+import cdzdapp.domain.User;
+import cdzdapp.repository.InMemoryUserRepository;
+import cdzdapp.repository.UserRepository;
+import cdzdapp.test.categories.SmallTest;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 

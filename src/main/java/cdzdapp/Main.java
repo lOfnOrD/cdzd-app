@@ -1,12 +1,12 @@
-package cdzero2hero;
+package cdzdapp;
 
-import cdzero2hero.domain.Friend;
-import cdzero2hero.domain.User;
-import cdzero2hero.repository.InMemoryFriendRepository;
-import cdzero2hero.repository.InMemoryUserRepository;
-import cdzero2hero.web.FriendsServlet;
-import cdzero2hero.web.LoginServlet;
-import cdzero2hero.web.LogoutServlet;
+import cdzdapp.domain.Friend;
+import cdzdapp.domain.User;
+import cdzdapp.repository.InMemoryFriendRepository;
+import cdzdapp.repository.InMemoryUserRepository;
+import cdzdapp.web.FriendsServlet;
+import cdzdapp.web.LoginServlet;
+import cdzdapp.web.LogoutServlet;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.Server;

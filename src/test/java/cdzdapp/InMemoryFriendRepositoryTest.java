@@ -1,6 +1,6 @@
-package cdzero2hero;
+package cdzdapp;
 
-import cdzero2hero.test.categories.SmallTest;
+import cdzdapp.test.categories.SmallTest;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
