@@ -20,6 +20,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginServlet extends HttpServlet {
+    public static boolean shuttingDown;
+
     private UserRepository userRepository = DbUserRepository.INSTANCE;
 
     @Override
@@ -62,5 +64,14 @@ public class LoginServlet extends HttpServlet {
         }
 
         response.sendRedirect("/");
+    }
+
+    @Override
+    protected void doOptions(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doOptions(req, resp);
+
+        if (shuttingDown) {
+            resp.setStatus(404);
+        }
     }
 }

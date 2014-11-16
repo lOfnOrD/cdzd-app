@@ -101,6 +101,13 @@ public class Main {
             @Override
             public void handle(String target, Request baseRequest, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
                 if ("GET".equals(request.getMethod())) {
+                    LoginServlet.shuttingDown = true;
+                    try {
+                        Thread.sleep(5000);
+                    } catch (InterruptedException e) {
+                        //Ignore
+                    }
+
                     try {
                         Main.stop();
                     } catch (Exception e) {
