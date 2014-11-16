@@ -18,7 +18,7 @@ public enum DbFriendRepository implements FriendRepository {
     @Override
     public List<Friend> getFriendsForUser(User user) {
         try (Connection connection = Database.INSTANCE.getDataSource().getConnection()) {
-            try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM FRIEND WHERE USER_ID=?")) {
+            try (PreparedStatement statement = connection.prepareStatement("SELECT ID, FIRST_NAME, SURNAME FROM FRIEND WHERE USER_ID=?")) {
                 statement.setInt(1, user.getId());
                 try (ResultSet resultSet = statement.executeQuery()) {
                     List<Friend> userFriends = new ArrayList<>();
