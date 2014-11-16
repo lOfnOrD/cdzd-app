@@ -42,7 +42,6 @@ public class FriendsServlet extends HttpServlet {
         values.put("bgcolor", Config.INSTANCE.getBackgroundColor());
         values.put("name", user.getName());
         values.put("friends", friendRepository.getFriendsForUser(user));
-        values.put("deleteFriend", Config.INSTANCE.isFeatureDeleteFriend());
 
         response.setCharacterEncoding("UTF-8");
         MustacheFactory mustacheFactory = new DefaultMustacheFactory();

@@ -5,7 +5,6 @@ import cdzdapp.repository.DbFriendRepository;
 import cdzdapp.repository.DbUserRepository;
 import cdzdapp.repository.FriendRepository;
 import cdzdapp.repository.UserRepository;
-import cdzdapp.util.Config;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,7 +20,7 @@ public class DeleteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = getUser(request);
-        if ((user == null) || !Config.INSTANCE.isFeatureDeleteFriend()) {
+        if (user == null) {
             request.getRequestDispatcher("/logout").forward(request, response);
             return;
         }

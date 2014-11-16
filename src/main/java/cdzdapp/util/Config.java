@@ -37,8 +37,4 @@ public enum Config {
     public boolean isDbTestData() {
         return Boolean.parseBoolean(properties.getProperty("db.testdata"));
     }
-
-    public boolean isFeatureDeleteFriend() {
-        return Boolean.parseBoolean(properties.getProperty("feature.deletefriend"));
-    }
 }
