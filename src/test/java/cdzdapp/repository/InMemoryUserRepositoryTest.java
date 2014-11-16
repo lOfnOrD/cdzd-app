@@ -1,4 +1,4 @@
-package cdzdapp;
+package cdzdapp.repository;
 
 import cdzdapp.domain.User;
 import cdzdapp.repository.InMemoryUserRepository;
