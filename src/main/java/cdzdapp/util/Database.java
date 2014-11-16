@@ -3,6 +3,9 @@ package cdzdapp.util;
 import org.flywaydb.core.Flyway;
 
 import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public enum Database {
     INSTANCE;
@@ -27,5 +30,17 @@ public enum Database {
 
     public DataSource getDataSource() {
         return flyway.getDataSource();
+    }
+
+    public boolean canConnect() {
+        try (Connection connection = getDataSource().getConnection()) {
+            try (PreparedStatement statement = connection.prepareStatement("SELECT COUNT(*) FROM USER")) {
+                statement.executeQuery();
+            }
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

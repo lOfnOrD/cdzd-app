@@ -6,6 +6,7 @@ import cdzdapp.web.DeleteServlet;
 import cdzdapp.web.FriendsServlet;
 import cdzdapp.web.LoginServlet;
 import cdzdapp.web.LogoutServlet;
+import cdzdapp.web.StatusServlet;
 import com.ctlok.web.session.StatelessSessionFilter;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Request;
@@ -90,6 +91,7 @@ public class Main {
         webAppContext.addServlet(FriendsServlet.class.getName(), "/friends");
         webAppContext.addServlet(DeleteServlet.class.getName(), "/delete");
         webAppContext.addServlet(LogoutServlet.class.getName(), "/logout");
+        webAppContext.addServlet(StatusServlet.class.getName(), "/status");
         webAppContext.setConfigurations(new Configuration[]{new WebXmlConfiguration()});
 
         HandlerList handlers = new HandlerList();
