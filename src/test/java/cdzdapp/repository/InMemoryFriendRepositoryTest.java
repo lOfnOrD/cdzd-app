@@ -1,4 +1,4 @@
-package cdzdapp;
+package cdzdapp.repository;
 
 import cdzdapp.test.categories.SmallTest;
 import org.junit.Ignore;
