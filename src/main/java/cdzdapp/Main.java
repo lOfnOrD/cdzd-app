@@ -2,6 +2,7 @@ package cdzdapp;
 
 import cdzdapp.util.Config;
 import cdzdapp.util.Database;
+import cdzdapp.web.DeleteServlet;
 import cdzdapp.web.FriendsServlet;
 import cdzdapp.web.LoginServlet;
 import cdzdapp.web.LogoutServlet;
@@ -87,6 +88,7 @@ public class Main {
 
         webAppContext.addServlet(LoginServlet.class.getName(), "/");
         webAppContext.addServlet(FriendsServlet.class.getName(), "/friends");
+        webAppContext.addServlet(DeleteServlet.class.getName(), "/delete");
         webAppContext.addServlet(LogoutServlet.class.getName(), "/logout");
         webAppContext.setConfigurations(new Configuration[]{new WebXmlConfiguration()});
 
