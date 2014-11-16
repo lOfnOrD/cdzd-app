@@ -36,4 +36,18 @@ public enum InMemoryFriendRepository implements FriendRepository {
         }
         friends.get(user).add(newFriend);
     }
+
+    @Override
+    public void deleteFriend(Integer userId, Integer friendId) {
+        for (User user : friends.keySet()) {
+            if (userId.equals(user.getId())) {
+                for (Friend friend : friends.get(user)) {
+                    if (friendId.equals(friend.getId())) {
+                        friends.get(user).remove(friend);
+                        return;
+                    }
+                }
+            }
+        }
+    }
 }

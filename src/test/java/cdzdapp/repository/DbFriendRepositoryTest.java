@@ -40,4 +40,19 @@ public class DbFriendRepositoryTest {
         assertTrue(friendRepository.getFriendsForUser(marge).contains(barney));
         assertFalse(friendRepository.getFriendsForUser(maggie).contains(barney));
     }
+
+    @Test
+    public void deleteFriend() {
+        User marge = new User("Marge");
+        UserRepository userRepository = DbUserRepository.INSTANCE;
+        userRepository.addUser(marge);
+
+        Friend barney = new Friend(marge, "Barney", "Gumble");
+        FriendRepository friendRepository = DbFriendRepository.INSTANCE;
+        friendRepository.addFriend(barney);
+
+        assertTrue(friendRepository.getFriendsForUser(marge).contains(barney));
+        friendRepository.deleteFriend(marge.getId(), barney.getId());
+        assertFalse(friendRepository.getFriendsForUser(marge).contains(barney));
+    }
 }

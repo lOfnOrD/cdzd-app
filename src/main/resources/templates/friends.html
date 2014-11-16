@@ -11,7 +11,18 @@
 </thead>
 <tbody>
 {{#friends}}
-<tr class="friend"><td>{{firstName}}</td><td>{{surname}}</td></tr>
+<tr class="friend">
+    <td>{{firstName}}</td>
+    <td>{{surname}}</td>
+    {{#deleteFriend}}
+    <td>
+        <form action="/delete" method="post" style="margin-bottom: 0">
+            <input name="id" type="hidden" value="{{id}}">
+            <input name="delete_{{id}}" type="submit" value="Delete">
+        </form>
+    </td>
+    {{/deleteFriend}}
+</tr>
 {{/friends}}
 </tbody>
 </table>

@@ -52,4 +52,17 @@ public enum DbFriendRepository implements FriendRepository {
             throw new IllegalStateException("Unable add friend with name: " + newFriend.getFirstName(), e);
         }
     }
+
+    @Override
+    public void deleteFriend(Integer userId, Integer friendId) {
+        try (Connection connection = Database.INSTANCE.getDataSource().getConnection()) {
+            try (PreparedStatement statement = connection.prepareStatement("DELETE FROM FRIEND WHERE ID=? AND USER_ID=?")) {
+                statement.setInt(1, friendId);
+                statement.setInt(2, userId);
+                statement.execute();
+            }
+        } catch (SQLException e) {
+            throw new IllegalStateException("Unable to delete friend with id: " + friendId, e);
+        }
+    }
 }

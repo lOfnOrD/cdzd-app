@@ -9,4 +9,6 @@ public interface FriendRepository {
     List<Friend> getFriendsForUser(User user);
 
     void addFriend(Friend newFriend);
+
+    void deleteFriend(Integer userId, Integer friendId);
 }
