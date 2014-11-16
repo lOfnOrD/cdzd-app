@@ -23,7 +23,7 @@ public enum DbFriendRepository implements FriendRepository {
                 try (ResultSet resultSet = statement.executeQuery()) {
                     List<Friend> userFriends = new ArrayList<>();
                     while (resultSet.next()) {
-                        Friend friend = new Friend(user, resultSet.getString("FIRST_NAME"), resultSet.getString("LAST_NAME"));
+                        Friend friend = new Friend(user, resultSet.getString("FIRST_NAME"), resultSet.getString("SURNAME"));
                         friend.setId(resultSet.getInt("ID"));
                         userFriends.add(friend);
                     }
@@ -38,10 +38,10 @@ public enum DbFriendRepository implements FriendRepository {
     @Override
     public void addFriend(Friend newFriend) {
         try (Connection connection = Database.INSTANCE.getDataSource().getConnection()) {
-            try (PreparedStatement statement = connection.prepareStatement("INSERT INTO FRIEND (USER_ID, FIRST_NAME, LAST_NAME) VALUES(?,?,?)", Statement.RETURN_GENERATED_KEYS)) {
+            try (PreparedStatement statement = connection.prepareStatement("INSERT INTO FRIEND (USER_ID, FIRST_NAME, SURNAME) VALUES(?,?,?)", Statement.RETURN_GENERATED_KEYS)) {
                 statement.setInt(1, newFriend.getUser().getId());
                 statement.setString(2, newFriend.getFirstName());
-                statement.setString(3, newFriend.getLastName());
+                statement.setString(3, newFriend.getSurname());
                 statement.executeUpdate();
                 try (ResultSet resultSet = statement.getGeneratedKeys()) {
                     resultSet.next();

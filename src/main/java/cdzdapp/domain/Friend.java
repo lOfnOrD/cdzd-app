@@ -4,12 +4,12 @@ public class Friend {
     private Integer id;
     private final User user;
     private final String firstName;
-    private final String lastName;
+    private final String surname;
 
-    public Friend(User user, String firstName, String lastName) {
+    public Friend(User user, String firstName, String surname) {
         this.user = user;
         this.firstName = firstName;
-        this.lastName = lastName;
+        this.surname = surname;
     }
 
     public Integer getId() {
@@ -24,8 +24,8 @@ public class Friend {
         return firstName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getSurname() {
+        return surname;
     }
 
     public void setId(Integer id) {
@@ -41,7 +41,7 @@ public class Friend {
 
         if (!firstName.equals(friend.firstName)) return false;
         if (id != null ? !id.equals(friend.id) : friend.id != null) return false;
-        if (!lastName.equals(friend.lastName)) return false;
+        if (!surname.equals(friend.surname)) return false;
         if (!user.equals(friend.user)) return false;
 
         return true;
@@ -52,7 +52,7 @@ public class Friend {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + user.hashCode();
         result = 31 * result + firstName.hashCode();
-        result = 31 * result + lastName.hashCode();
+        result = 31 * result + surname.hashCode();
         return result;
     }
 }
