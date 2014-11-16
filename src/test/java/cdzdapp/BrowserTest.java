@@ -3,13 +3,12 @@ package cdzdapp;
 import cdzdapp.test.api.FriendsPage;
 import cdzdapp.test.api.LoginPage;
 import cdzdapp.test.categories.LargeTest;
+import cdzdapp.util.Database;
 import com.gargoylesoftware.htmlunit.NicelyResynchronizingAjaxController;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
@@ -18,20 +17,12 @@ import static org.junit.Assert.assertTrue;
 
 @Category(LargeTest.class)
 public class BrowserTest {
-    @BeforeClass
-    public static void setUpClass() {
-        Main.start();
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-        Main.stop();
-    }
-
     private WebClient webClient;
 
     @Before
     public void setUp() {
+        Database.INSTANCE.clean();
+        Main.start();
         webClient = new WebClient();
         webClient.setAjaxController(new NicelyResynchronizingAjaxController());
     }
@@ -39,6 +30,7 @@ public class BrowserTest {
     @After
     public void tearDown() {
         webClient.closeAllWindows();
+        Main.stop();
     }
 
     @Test

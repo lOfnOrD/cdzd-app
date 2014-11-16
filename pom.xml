@@ -197,12 +197,22 @@
             </properties>
         </profile>
         <profile>
-            <id>largetest</id>
+            <id>test-local</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <flyway.url>jdbc:hsqldb:hsql://localhost:9200/largetest</flyway.url>
+                <flyway.url>jdbc:hsqldb:hsql://localhost:9200/test-local</flyway.url>
+                <flyway.locations>db/migration,db/testdata</flyway.locations>
+            </properties>
+        </profile>
+        <profile>
+            <id>test-ci</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <flyway.url>jdbc:hsqldb:hsql://localhost:9200/test-ci</flyway.url>
                 <flyway.locations>db/migration,db/testdata</flyway.locations>
             </properties>
         </profile>
