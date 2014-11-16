@@ -8,11 +8,15 @@ public class EnvironmentDetection {
 
     public static String detectEnvironment() {
         try {
+            String hostname = InetAddress.getLocalHost().getHostName();
+
             if (classExists("com.gargoylesoftware.htmlunit.WebClient")) {
-                return "largetest";
+                if ("cdzd-ci".equals(hostname)) {
+                    return "test-ci";
+                }
+                return "test-local";
             }
 
-            String hostname = InetAddress.getLocalHost().getHostName();
             if (hostname.startsWith("cdzd-app")) {
                 return "prod";
             }
