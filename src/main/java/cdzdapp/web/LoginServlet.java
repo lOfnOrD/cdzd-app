@@ -3,6 +3,7 @@ package cdzdapp.web;
 import cdzdapp.domain.User;
 import cdzdapp.repository.InMemoryUserRepository;
 import cdzdapp.repository.UserRepository;
+import cdzdapp.util.Config;
 import cdzdapp.util.EnvironmentDetection;
 import cdzdapp.util.ServerInfo;
 import com.github.mustachejava.DefaultMustacheFactory;
@@ -34,6 +35,7 @@ public class LoginServlet extends HttpServlet {
         values.put("server", serverInfo.getHostName());
         values.put("version", serverInfo.getVersion());
         values.put("env", EnvironmentDetection.detectEnvironment());
+        values.put("bgcolor", Config.INSTANCE.getBackgroundColor());
 
         response.setCharacterEncoding("UTF-8");
         MustacheFactory mustacheFactory = new DefaultMustacheFactory();

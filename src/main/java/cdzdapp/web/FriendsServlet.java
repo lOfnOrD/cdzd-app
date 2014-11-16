@@ -6,6 +6,7 @@ import cdzdapp.repository.FriendRepository;
 import cdzdapp.repository.InMemoryFriendRepository;
 import cdzdapp.repository.InMemoryUserRepository;
 import cdzdapp.repository.UserRepository;
+import cdzdapp.util.Config;
 import cdzdapp.util.EnvironmentDetection;
 import cdzdapp.util.ServerInfo;
 import com.github.mustachejava.DefaultMustacheFactory;
@@ -38,6 +39,7 @@ public class FriendsServlet extends HttpServlet {
         values.put("server", serverInfo.getHostName());
         values.put("version", serverInfo.getVersion());
         values.put("env", EnvironmentDetection.detectEnvironment());
+        values.put("bgcolor", Config.INSTANCE.getBackgroundColor());
         values.put("name", user.getName());
         values.put("friends", friendRepository.getFriendsForUser(user));
 

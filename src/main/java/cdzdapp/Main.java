@@ -4,6 +4,7 @@ import cdzdapp.domain.Friend;
 import cdzdapp.domain.User;
 import cdzdapp.repository.InMemoryFriendRepository;
 import cdzdapp.repository.InMemoryUserRepository;
+import cdzdapp.util.Config;
 import cdzdapp.web.FriendsServlet;
 import cdzdapp.web.LoginServlet;
 import cdzdapp.web.LogoutServlet;
@@ -24,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class Main {
-    public static final int HTTP_SERVER_PORT = 9100;
+    public static final int HTTP_SERVER_PORT = Config.INSTANCE.getHttpPort();
 
     private static Server httpServer;
     private static Server shutdownServer;
@@ -95,7 +96,7 @@ public class Main {
     }
 
     private static void createShutdownServer() {
-        shutdownServer = new Server(9099);
+        shutdownServer = new Server(Config.INSTANCE.getShutdownPort());
         shutdownServer.setHandler(new AbstractHandler() {
             @Override
             public void handle(String target, Request baseRequest, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
