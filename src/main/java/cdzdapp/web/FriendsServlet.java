@@ -2,9 +2,9 @@ package cdzdapp.web;
 
 import cdzdapp.domain.Friend;
 import cdzdapp.domain.User;
+import cdzdapp.repository.DbFriendRepository;
+import cdzdapp.repository.DbUserRepository;
 import cdzdapp.repository.FriendRepository;
-import cdzdapp.repository.InMemoryFriendRepository;
-import cdzdapp.repository.InMemoryUserRepository;
 import cdzdapp.repository.UserRepository;
 import cdzdapp.util.Config;
 import cdzdapp.util.EnvironmentDetection;
@@ -23,8 +23,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FriendsServlet extends HttpServlet {
-    private final UserRepository userRepository = InMemoryUserRepository.INSTANCE;
-    private final FriendRepository friendRepository = InMemoryFriendRepository.INSTANCE;
+    private final UserRepository userRepository = DbUserRepository.INSTANCE;
+    private final FriendRepository friendRepository = DbFriendRepository.INSTANCE;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -35,7 +35,7 @@ public class FriendsServlet extends HttpServlet {
         }
 
         ServerInfo serverInfo = new ServerInfo();
-        Map<String,Object> values = new HashMap<>();
+        Map<String, Object> values = new HashMap<>();
         values.put("server", serverInfo.getHostName());
         values.put("version", serverInfo.getVersion());
         values.put("env", EnvironmentDetection.detectEnvironment());

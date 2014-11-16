@@ -29,4 +29,12 @@ public enum Config {
     public String getBackgroundColor() {
         return properties.getProperty("backgroundcolor");
     }
+
+    public String getDbUrl() {
+        return properties.getProperty("db.url");
+    }
+
+    public boolean isDbTestData() {
+        return Boolean.parseBoolean(properties.getProperty("db.testdata"));
+    }
 }

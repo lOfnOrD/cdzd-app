@@ -49,6 +49,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jetty.version>9.2.5.v20141112</jetty.version>
+        <flyway.version>3.0</flyway.version>
     </properties>
 
     <dependencies>
@@ -66,6 +67,16 @@
             <groupId>com.github.spullara.mustache.java</groupId>
             <artifactId>compiler</artifactId>
             <version>0.8.17</version>
+        </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>${flyway.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>2.3.2</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -163,6 +174,46 @@
                     <tag>cdzd-app-${project.version}</tag>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>${flyway.version}</version>
+                <configuration>
+                    <user>SA</user>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>local</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <flyway.url>jdbc:hsqldb:hsql://localhost:9200/local</flyway.url>
+                <flyway.locations>db/migration,db/testdata</flyway.locations>
+            </properties>
+        </profile>
+        <profile>
+            <id>largetest</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <flyway.url>jdbc:hsqldb:hsql://localhost:9200/largetest</flyway.url>
+                <flyway.locations>db/migration,db/testdata</flyway.locations>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <flyway.url>jdbc:hsqldb:hsql://localhost:9200/prod</flyway.url>
+            </properties>
+        </profile>
+    </profiles>
 </project>

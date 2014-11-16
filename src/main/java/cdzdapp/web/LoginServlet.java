@@ -1,7 +1,7 @@
 package cdzdapp.web;
 
 import cdzdapp.domain.User;
-import cdzdapp.repository.InMemoryUserRepository;
+import cdzdapp.repository.DbUserRepository;
 import cdzdapp.repository.UserRepository;
 import cdzdapp.util.Config;
 import cdzdapp.util.EnvironmentDetection;
@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginServlet extends HttpServlet {
-    private UserRepository userRepository = InMemoryUserRepository.INSTANCE;
+    private UserRepository userRepository = DbUserRepository.INSTANCE;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet {
         }
 
         ServerInfo serverInfo = new ServerInfo();
-        Map<String,Object> values = new HashMap<>();
+        Map<String, Object> values = new HashMap<>();
         values.put("server", serverInfo.getHostName());
         values.put("version", serverInfo.getVersion());
         values.put("env", EnvironmentDetection.detectEnvironment());

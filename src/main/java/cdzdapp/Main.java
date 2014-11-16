@@ -5,6 +5,7 @@ import cdzdapp.domain.User;
 import cdzdapp.repository.InMemoryFriendRepository;
 import cdzdapp.repository.InMemoryUserRepository;
 import cdzdapp.util.Config;
+import cdzdapp.util.Database;
 import cdzdapp.web.FriendsServlet;
 import cdzdapp.web.LoginServlet;
 import cdzdapp.web.LogoutServlet;
@@ -41,7 +42,7 @@ public class Main {
     }
 
     public static void start() {
-        createTestData();
+        Database.INSTANCE.migrate();
 
         createHttpServer();
         createShutdownServer();

@@ -31,4 +31,28 @@ public class Friend {
     public void setId(Integer id) {
         this.id = id;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Friend friend = (Friend) o;
+
+        if (!firstName.equals(friend.firstName)) return false;
+        if (id != null ? !id.equals(friend.id) : friend.id != null) return false;
+        if (!lastName.equals(friend.lastName)) return false;
+        if (!user.equals(friend.user)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + user.hashCode();
+        result = 31 * result + firstName.hashCode();
+        result = 31 * result + lastName.hashCode();
+        return result;
+    }
 }
