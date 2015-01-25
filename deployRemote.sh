@@ -11,7 +11,7 @@ until [ $(ps | grep java | wc -l) -eq 0 ]; do
     let COUNTER=COUNTER+1
     if [ $COUNTER -gt $TIMEOUT ]; then
         echo Error: instance failed to shutdown within $TIMEOUT seconds. Killing ...
-        killall
+        killall java
     fi
 done
 
