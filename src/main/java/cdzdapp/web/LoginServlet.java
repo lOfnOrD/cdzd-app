@@ -29,6 +29,7 @@ public class LoginServlet extends HttpServlet {
         }
 
         ServerInfo serverInfo = new ServerInfo();
+
         Map<String,Object> values = new HashMap<>();
         values.put("server", serverInfo.getHostName());
         values.put("version", serverInfo.getVersion());
