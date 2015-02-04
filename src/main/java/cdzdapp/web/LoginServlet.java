@@ -25,10 +25,12 @@ public class LoginServlet extends HttpServlet {
             return;
         }
 
+        Map<String,Object> values = new HashMap<>();
+
         response.setCharacterEncoding("UTF-8");
         MustacheFactory mustacheFactory = new DefaultMustacheFactory();
         Mustache mustache = mustacheFactory.compile("templates/login.html");
-        mustache.execute(response.getWriter(), null).flush();
+        mustache.execute(response.getWriter(), values).flush();
     }
 
     @Override
